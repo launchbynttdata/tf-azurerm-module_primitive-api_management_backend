@@ -1,4 +1,4 @@
-module github.com/launchbynttdata/tf-azurerm-module_reference-api_management
+module github.com/launchbynttdata/tf-azurerm-module_primitive-api_management_backend
 
 go 1.21
 
