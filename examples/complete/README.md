@@ -1,4 +1,4 @@
-# private
+# complete
 
 Please set a provider block with the following, to avoid soft-deletes of the APIM instance which can cause problems with the tests
 ```
