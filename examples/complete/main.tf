@@ -35,7 +35,6 @@ module "resource_group" {
   location = var.region
 
   tags = merge(var.tags, { resource_name = module.resource_names["resource_group"].standard })
-
 }
 
 module "apim" {
@@ -55,6 +54,8 @@ module "apim" {
   virtual_network_type = var.virtual_network_type
 
   tags = merge(var.tags, { resource_name = module.resource_names["api_management"].standard })
+
+  depends_on = [module.resource_group]
 }
 
 module "apim_backend" {
@@ -74,4 +75,6 @@ module "apim_backend" {
   proxy                  = var.proxy
   service_fabric_cluster = var.service_fabric_cluster
   tls                    = var.tls
+
+  depends_on = [module.apim]
 }
