@@ -15,7 +15,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestApiManagementModule(t *testing.T, ctx types.TestContext) {
+func TestComposableApiManagementModule(t *testing.T, ctx types.TestContext) {
 	subscriptionId := os.Getenv("ARM_SUBSCRIPTION_ID")
 	if len(subscriptionId) == 0 {
 		t.Fatal("ARM_SUBSCRIPTION_ID environment variable is not set")
@@ -27,10 +27,10 @@ func TestApiManagementModule(t *testing.T, ctx types.TestContext) {
 	}
 
 	t.Run("doesApiManagementBackendExist", func(t *testing.T) {
-		resourceGroupName := terraform.Output(t, ctx.TerratestTerraformOptions(), "resource_group_name")
-		serviceName := terraform.Output(t, ctx.TerratestTerraformOptions(), "api_management_name")
-		backendUrl := terraform.Output(t, ctx.TerratestTerraformOptions(), "backend_url")
-		backendName := terraform.Output(t, ctx.TerratestTerraformOptions(), "backend_name")
+		resourceGroupName := terraform.OutputContext(t, context.Background(), ctx.TerratestTerraformOptions(), "resource_group_name")
+		serviceName := terraform.OutputContext(t, context.Background(), ctx.TerratestTerraformOptions(), "api_management_name")
+		backendUrl := terraform.OutputContext(t, context.Background(), ctx.TerratestTerraformOptions(), "backend_url")
+		backendName := terraform.OutputContext(t, context.Background(), ctx.TerratestTerraformOptions(), "backend_name")
 
 		options := arm.ClientOptions{
 			ClientOptions: azcore.ClientOptions{

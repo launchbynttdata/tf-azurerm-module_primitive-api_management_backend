@@ -103,19 +103,13 @@ If `make check` target is successful, developer is good to commit the code to pr
 - runs `conftests`. `conftests` make sure `policy` checks are successful.
 - runs `terratest`. This is integration test suit.
 - runs `opa` tests
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.0 |
 | <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~>3.117 |
-
-## Providers
-
-| Name | Version |
-|------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 3.117.1 |
 
 ## Modules
 
@@ -131,18 +125,18 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | name of the resource group where the APIM exists | `string` | `null` | no |
 | <a name="input_api_management_name"></a> [api\_management\_name](#input\_api\_management\_name) | name of the APIM in which this backend will de deployed | `string` | `null` | no |
-| <a name="input_title"></a> [title](#input\_title) | title of the backend | `string` | `null` | no |
-| <a name="input_protocol"></a> [protocol](#input\_protocol) | n/a | `string` | `"http"` | no |
-| <a name="input_resource_id"></a> [resource\_id](#input\_resource\_id) | Can be the ARM Resource ID of Logic Apps, Function Apps or API Apps, or the management endpoint of a Service Fabric cluster. | `string` | `null` | no |
-| <a name="input_name"></a> [name](#input\_name) | name of the backend | `string` | `null` | no |
-| <a name="input_url"></a> [url](#input\_url) | the url for the backend service | `string` | `null` | no |
+| <a name="input_credentials"></a> [credentials](#input\_credentials) | options to authenticate with the backend server | <pre>object({<br/>    authorization = optional(object({<br/>      scheme    = optional(string, null)<br/>      parameter = optional(string, null)<br/>    }), null)<br/>    certificate = optional(list(string), null)<br/>    query       = optional(map(string), null)<br/>    header      = optional(map(string), null)<br/>  })</pre> | `null` | no |
 | <a name="input_description"></a> [description](#input\_description) | description of the backend | `string` | `null` | no |
-| <a name="input_proxy"></a> [proxy](#input\_proxy) | options for a proxy server used to connect to the backend URI | <pre>object({<br>    url      = string<br>    password = optional(string, null)<br>    username = string<br>  })</pre> | `null` | no |
-| <a name="input_service_fabric_cluster"></a> [service\_fabric\_cluster](#input\_service\_fabric\_cluster) | options for connecting to a service fabric cluster | <pre>object({<br>    client_certificate_thumbprint    = optional(string, null)<br>    client_certificate_id            = optional(string, null)<br>    management_endpoints             = list(string)<br>    max_partition_resolution_retries = number<br>    server_certificate_thumbprints   = optional(list(string), null)<br>    server_x509_names = optional(list(object({<br>      issuer_certificate_thumbprint = string<br>      name                          = string<br>    })), null)<br>  })</pre> | `null` | no |
-| <a name="input_tls"></a> [tls](#input\_tls) | options when using self-signed certificates for the backend host | <pre>object({<br>    validate_certificate_chain = optional(bool, null)<br>    validate_certificate_name  = optional(bool, null)<br>  })</pre> | `null` | no |
-| <a name="input_credentials"></a> [credentials](#input\_credentials) | options to authenticate with the backend server | <pre>object({<br>    authorization = optional(object({<br>      scheme    = optional(string, null)<br>      parameter = optional(string, null)<br>    }), null)<br>    certificate = optional(list(string), null)<br>    query       = optional(map(string), null)<br>    header      = optional(map(string), null)<br>  })</pre> | `null` | no |
+| <a name="input_name"></a> [name](#input\_name) | name of the backend | `string` | `null` | no |
+| <a name="input_protocol"></a> [protocol](#input\_protocol) | n/a | `string` | `"http"` | no |
+| <a name="input_proxy"></a> [proxy](#input\_proxy) | options for a proxy server used to connect to the backend URI | <pre>object({<br/>    url      = string<br/>    password = optional(string, null)<br/>    username = string<br/>  })</pre> | `null` | no |
+| <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | name of the resource group where the APIM exists | `string` | `null` | no |
+| <a name="input_resource_id"></a> [resource\_id](#input\_resource\_id) | Can be the ARM Resource ID of Logic Apps, Function Apps or API Apps, or the management endpoint of a Service Fabric cluster. | `string` | `null` | no |
+| <a name="input_service_fabric_cluster"></a> [service\_fabric\_cluster](#input\_service\_fabric\_cluster) | options for connecting to a service fabric cluster | <pre>object({<br/>    client_certificate_thumbprint    = optional(string, null)<br/>    client_certificate_id            = optional(string, null)<br/>    management_endpoints             = list(string)<br/>    max_partition_resolution_retries = number<br/>    server_certificate_thumbprints   = optional(list(string), null)<br/>    server_x509_names = optional(list(object({<br/>      issuer_certificate_thumbprint = string<br/>      name                          = string<br/>    })), null)<br/>  })</pre> | `null` | no |
+| <a name="input_title"></a> [title](#input\_title) | title of the backend | `string` | `null` | no |
+| <a name="input_tls"></a> [tls](#input\_tls) | options when using self-signed certificates for the backend host | <pre>object({<br/>    validate_certificate_chain = optional(bool, null)<br/>    validate_certificate_name  = optional(bool, null)<br/>  })</pre> | `null` | no |
+| <a name="input_url"></a> [url](#input\_url) | the url for the backend service | `string` | `null` | no |
 
 ## Outputs
 
@@ -151,4 +145,4 @@ No modules.
 | <a name="output_backend_id"></a> [backend\_id](#output\_backend\_id) | n/a |
 | <a name="output_backend_name"></a> [backend\_name](#output\_backend\_name) | n/a |
 | <a name="output_backend_url"></a> [backend\_url](#output\_backend\_url) | n/a |
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- END_TF_DOCS -->
